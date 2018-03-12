@@ -1,41 +1,20 @@
 #include <stdio.h>
-#include "def.h"
+#include <stdlib.h>
+#include <assert.h>
+#include "bmp.h"
+#include "convolution.h"
 
-int main()
+int main(int argc, char *argv[])
 {
 	printf("convolution using opencl!!\n");
-	loadBMPFile(IMAGE_FILE_PATH);
+	BMP bmp;
+    bmpLoad(&bmp, argv[1]);
+    bmpPrint(&bmp);
+//    bmpSetBox(&bmp, 0, 0, 20, 20, 0x66, 0x33, 0x99);
+	convolution(&bmp,NULL,NULL,0,cpu);
+    bmpSave(&bmp, argv[2]);
+    return 0;
 
 }
 
-
-void *loadBMPFile(char *fileName)
-{
-	BITMAPINFOHEADER bmpHeader;
-	printf("prepare load file:%s\n",fileName);
-	FILE *imgFile; 
-	imgFile = fopen(fileName,"rb+");
-
-	if(imgFile != NULL)
-		printf("open img file successful!\n");
-
-	fseek(imgFile,2,SEEK_SET);
-	fread(&bmpHeader.size,4,1,imgFile);
-	printf("Size=%d\n",bmpHeader.size);
-
-	fseek(imgFile,18,SEEK_SET);
-	fread(&bmpHeader.width,4,1,imgFile);
-
-
-
-
-
-
-
-	fclose(imgFile);
-
-
-	return NULL;
-
-}
 
