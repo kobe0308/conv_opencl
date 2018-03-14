@@ -23,7 +23,7 @@ int bmpLoad(BMP *bmp, char *fileName) {
    bmp->width = B2U32(info,4);
    bmp->height = B2U32(info,8);
    bmp->planes = B2U16(info,12); assert(bmp->planes==1);
-   bmp->bitsPerPixel = B2U16(info,14); assert(bmp->bitsPerPixel==24);
+   bmp->bitsPerPixel = B2U16(info,14); //assert(bmp->bitsPerPixel==24);
    bmp->compression = B2U32(info,16);
    bmp->imageSize = B2U32(info,20);
    bmp->xPixelsPerM = B2U32(info,24);

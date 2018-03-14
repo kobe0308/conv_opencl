@@ -50,6 +50,10 @@ typedef struct Pixel {
     BYTE B;
 } Pixel;
 
+typedef struct Pixel_Gray {
+	BYTE Value
+} Pixel_Gray;
+
 #define U16(x)    ((unsigned short) (x))
 #define U32(x)    ((int) (x))
 #define B2U16(bytes,offset)  (U16(bytes[offset]) | U16(bytes[offset+1]) << 8)

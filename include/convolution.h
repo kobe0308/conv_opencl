@@ -3,7 +3,9 @@
 
 
 #include <stdio.h>
+#include <math.h>
 #include "bmp.h"
+
 typedef enum{
 	cpu=0,
 	opencl,
